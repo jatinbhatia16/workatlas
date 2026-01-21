@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title th:text="#{brand}">WorkAtlas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+<header class="bg-white border-b">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-semibold tracking-tight" th:text="#{brand}">WorkAtlas</a>
+    <nav class="flex items-center gap-4 text-sm">
+      <a class="hover:underline" href="/find" th:text="#{nav.find}">Find Professionals</a>
+      <a class="hover:underline" href="/register" th:text="#{nav.list}">List Your Work</a>
+      <a class="hover:underline" href="/pricing" th:text="#{nav.pricing}">Pricing</a>
+      <span class="text-slate-300">|</span>
+      <a class="hover:underline" th:href="@{__${#httpServletRequest.requestURI}__(lang='en')}" th:text="#{nav.lang.en}">EN</a>
+      <a class="hover:underline" th:href="@{__${#httpServletRequest.requestURI}__(lang='hi')}" th:text="#{nav.lang.hi}">HI</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-10">
+  <div th:fragment="content">
+<h1 class="text-2xl font-semibold" th:text="#{register.title}">Register as a Professional</h1>
+<p class="mt-2 text-slate-600" th:text="#{register.note}">Your profile will be reviewed before going live.</p>
+
+<form class="mt-6 bg-white border rounded-2xl p-6 grid md:grid-cols-2 gap-4" th:action="@{/register}" method="post" th:object="${form}">
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.fullName}">Full Name</label>
+    <input class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{fullName}" />
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}">error</p>
+  </div>
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.mobile}">Mobile Number</label>
+    <input class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{mobile}" placeholder="10-digit mobile"/>
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">error</p>
+  </div>
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.city}">City</label>
+    <select class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{citySlug}">
+      <option th:each="c: ${cities}" th:value="${c.slug}" th:text="${c.nameEn}">Delhi</option>
+    </select>
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('citySlug')}" th:errors="*{citySlug}">error</p>
+  </div>
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.area}">Area / Locality</label>
+    <input class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{area}" placeholder="e.g., Andheri West"/>
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('area')}" th:errors="*{area}">error</p>
+  </div>
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.category}">Service Category</label>
+    <select class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{categorySlug}">
+      <option th:each="cat: ${categories}" th:value="${cat.slug}" th:text="${cat.nameEn}">Electrician</option>
+    </select>
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('categorySlug')}" th:errors="*{categorySlug}">error</p>
+  </div>
+  <div>
+    <label class="text-sm text-slate-600" th:text="#{form.experience}">Experience (Years)</label>
+    <input type="number" min="0" max="60" class="mt-1 w-full border rounded-xl px-3 py-2" th:field="*{experienceYears}"/>
+    <p class="text-sm text-red-600 mt-1" th:if="${#fields.hasErrors('experienceYears')}" th:errors="*{experienceYears}">error</p>
+  </div>
+  <div class="md:col-span-2">
+    <button class="px-5 py-3 rounded-xl bg-slate-900 text-white font-medium" th:text="#{form.submit}">Submit for Review</button>
+  </div>
+</form>
+
+</div>
+</main>
+
+<footer class="border-t bg-white">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-wrap gap-4">
+    <a class="hover:underline" href="/legal/terms" th:text="#{legal.terms}">Terms</a>
+    <a class="hover:underline" href="/legal/privacy" th:text="#{legal.privacy}">Privacy</a>
+    <a class="hover:underline" href="/legal/disclaimer" th:text="#{legal.disclaimer}">Disclaimer</a>
+    <span class="ml-auto">© <span th:text="#{brand}">WorkAtlas</span></span>
+  </div>
+</footer>
+</body>
+</html>

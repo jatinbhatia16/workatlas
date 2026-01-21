@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: workatlas
+      POSTGRES_USER: workatlas
+      POSTGRES_PASSWORD: workatlas
+    ports:
+      - "5432:5432"
+    volumes:
+      - workatlas_pgdata:/var/lib/postgresql/data
+volumes:
+  workatlas_pgdata:

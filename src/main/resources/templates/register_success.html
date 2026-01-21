@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title th:text="#{brand}">WorkAtlas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+<header class="bg-white border-b">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-semibold tracking-tight" th:text="#{brand}">WorkAtlas</a>
+    <nav class="flex items-center gap-4 text-sm">
+      <a class="hover:underline" href="/find" th:text="#{nav.find}">Find Professionals</a>
+      <a class="hover:underline" href="/register" th:text="#{nav.list}">List Your Work</a>
+      <a class="hover:underline" href="/pricing" th:text="#{nav.pricing}">Pricing</a>
+      <span class="text-slate-300">|</span>
+      <a class="hover:underline" th:href="@{__${#httpServletRequest.requestURI}__(lang='en')}" th:text="#{nav.lang.en}">EN</a>
+      <a class="hover:underline" th:href="@{__${#httpServletRequest.requestURI}__(lang='hi')}" th:text="#{nav.lang.hi}">HI</a>
+    </nav>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-10">
+  <div th:fragment="content">
+<div class="bg-white border rounded-2xl p-8">
+  <h1 class="text-2xl font-semibold" th:text="#{register.success.title}">Submitted!</h1>
+  <p class="mt-2 text-slate-600" th:text="#{register.success.subtitle}">Your profile is under review. We will activate it once verified.</p>
+  <div class="mt-4 text-slate-800">
+    <span class="font-medium" th:text="#{register.success.id}">Your profile ID</span>:
+    <span class="font-mono" th:text="${createdId}">123</span>
+  </div>
+  <div class="mt-6">
+    <a href="/pricing" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-medium" th:text="#{nav.pricing}">Pricing</a>
+    <a href="/" class="ml-2 px-5 py-3 rounded-xl bg-white border font-medium">Home</a>
+  </div>
+</div>
+
+</div>
+</main>
+
+<footer class="border-t bg-white">
+  <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-slate-600 flex flex-wrap gap-4">
+    <a class="hover:underline" href="/legal/terms" th:text="#{legal.terms}">Terms</a>
+    <a class="hover:underline" href="/legal/privacy" th:text="#{legal.privacy}">Privacy</a>
+    <a class="hover:underline" href="/legal/disclaimer" th:text="#{legal.disclaimer}">Disclaimer</a>
+    <span class="ml-auto">© <span th:text="#{brand}">WorkAtlas</span></span>
+  </div>
+</footer>
+</body>
+</html>
