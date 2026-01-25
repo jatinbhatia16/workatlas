@@ -18,6 +18,7 @@ spring:
     open-in-view: false
   flyway:
     enabled: true
+    validate-on-migrate: false
 
 workatlas:
   adminKey: ${ADMIN_KEY:change-me}
