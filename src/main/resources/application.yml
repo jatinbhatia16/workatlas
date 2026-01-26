@@ -5,9 +5,9 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/workatlas}
-    username: ${DB_USER:workatlas}
-    password: ${DB_PASSWORD:workatlas}
+    url: jdbc:postgresql://dpg-d5rgv3v5r7bs7396gmh0-a:5432/workatlas_db_c52f
+    username: workatlas_db_c52f_user
+    password: YKK7FOZIXFRcvCScwlRptv2WmQObLiy6
   jpa:
     hibernate:
       ddl-auto: validate
