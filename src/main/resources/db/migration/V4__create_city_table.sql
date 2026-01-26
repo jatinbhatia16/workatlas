@@ -1,0 +1,7 @@
+CREATE TABLE city (
+    id BIGSERIAL PRIMARY KEY,
+    slug VARCHAR(100) NOT NULL UNIQUE,
+    name_en VARCHAR(200) NOT NULL,
+    name_hi VARCHAR(200)
+);
+
