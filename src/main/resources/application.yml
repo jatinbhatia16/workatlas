@@ -10,7 +10,7 @@ spring:
     password: CKaP6BqnL9T0qwkO3QKh7IzuFo0V5rLh
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     properties:
       hibernate:
         jdbc:
