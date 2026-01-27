@@ -12,7 +12,7 @@ CREATE TABLE category (
     name_hi VARCHAR(100)
 );
 
-CREATE TABLE professional (
+CREATE TABLE professionals (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(150) NOT NULL,
     mobile VARCHAR(15) NOT NULL,
