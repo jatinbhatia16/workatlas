@@ -24,6 +24,6 @@ CREATE TABLE professionals (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_prof_city ON professional(city_slug);
-CREATE INDEX idx_prof_category ON professional(category_slug);
+CREATE INDEX idx_prof_city ON professionals(city_slug);
+CREATE INDEX idx_prof_category ON professionals(category_slug);
 
