@@ -10,7 +10,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.time.LocalDateTime;
 import java.time.Instant;
 
 @Service
@@ -51,10 +50,10 @@ public class ProfessionalService {
   }
 
   @Transactional
-public void registerProfessional(Professional professional) {
+  public void registerProfessional(Professional professional) {
     professional.setStatus(ProfessionalStatus.APPROVED); // AUTO-APPROVE
     professional.setVerified(true);                       // optional, but consistent
-    professional.setCreatedAt(LocalDateTime.now());
+    professional.setCreatedAt(Instant.now());
 
     professionalRepository.save(professional);
 }
