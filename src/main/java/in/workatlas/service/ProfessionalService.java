@@ -57,8 +57,8 @@ public class ProfessionalService {
 
   @Transactional
   public void registerProfessional(Professional professional) {
-    professional.setCitySlug(toSlug(professional.getCity()));
-    professional.setCategorySlug(toSlug(professional.getCategory()));
+    professional.setCitySlug(toSlug(professional.getCitySlug()));
+    professional.setCategorySlug(toSlug(professional.getCategorySlug()));
     professional.setStatus(ProfessionalStatus.APPROVED); // AUTO-APPROVE
     professional.setVerified(true);                       // optional, but consistent
     professional.setCreatedAt(Instant.now());
