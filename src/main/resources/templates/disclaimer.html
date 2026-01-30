@@ -15,8 +15,7 @@
       <a class="hover:underline" href="/register" th:text="#{nav.list}">List Your Work</a>
       <a class="hover:underline" href="/pricing" th:text="#{nav.pricing}">Pricing</a>
       <span class="text-slate-300">|</span>
-      <a class="hover:underline" th:href="@{__${#request.requestURI}__(lang='en')}" th:text="#{nav.lang.en}">EN</a>
-      <a class="hover:underline" th:href="@{__${#request.requestURI}__(lang='hi')}" th:text="#{nav.lang.hi}">HI</a>
+      <a th:href="@{/}">Go to home</a>
     </nav>
   </div>
 </header>
