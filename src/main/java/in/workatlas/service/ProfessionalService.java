@@ -17,6 +17,12 @@ import java.time.Instant;
 public class ProfessionalService {
 
   private final ProfessionalRepository professionalRepository;
+  private String toSlug(String input) {
+    return input
+            .toLowerCase()
+            .trim()
+            .replaceAll("[^a-z0-9]+", "-");
+}
 
   @Transactional
   public Professional create(CreateProfessionalRequest req) {
@@ -51,6 +57,8 @@ public class ProfessionalService {
 
   @Transactional
   public void registerProfessional(Professional professional) {
+    professional.setCitySlug(toSlug(professional.getCity()));
+    professional.setCategorySlug(toSlug(professional.getCategory()));
     professional.setStatus(ProfessionalStatus.APPROVED); // AUTO-APPROVE
     professional.setVerified(true);                       // optional, but consistent
     professional.setCreatedAt(Instant.now());
