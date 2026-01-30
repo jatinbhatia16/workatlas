@@ -6,7 +6,7 @@ import lombok.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "professional",
+@Table(name = "professionals",
     indexes = {
       @Index(name="idx_prof_city", columnList="city_slug"),
       @Index(name="idx_prof_category", columnList="category_slug"),
