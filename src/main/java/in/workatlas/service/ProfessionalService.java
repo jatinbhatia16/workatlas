@@ -51,6 +51,15 @@ public class ProfessionalService {
   }
 
   @Transactional
+public void registerProfessional(Professional professional) {
+    professional.setStatus(ProfessionalStatus.APPROVED); // AUTO-APPROVE
+    professional.setVerified(true);                       // optional, but consistent
+    professional.setCreatedAt(LocalDateTime.now());
+
+    professionalRepository.save(professional);
+}
+
+  @Transactional
   public Professional approve(Long id, boolean verified) {
     Professional p = professionalRepository.findById(id).orElseThrow();
     p.setStatus(ProfessionalStatus.APPROVED);
