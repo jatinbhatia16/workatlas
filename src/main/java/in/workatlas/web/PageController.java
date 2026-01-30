@@ -28,9 +28,9 @@ public class PageController {
   }
 
   @GetMapping("/find")
-  public String find(@RequestParam(required = false) String city,
-                     @RequestParam(required = false) String category,
-                     @RequestParam(defaultValue = "0") int page,
+  public String find(@RequestParam(name = "city", required = false) String city,
+                     @RequestParam(name = "category", required = false) String category,
+                     @RequestParam(name = "page", defaultValue = "0") int page,
                      Model model) {
     model.addAttribute("cities", lookupService.cities());
     model.addAttribute("categories", lookupService.categories());
